@@ -11,7 +11,7 @@ CREATE TRIGGER updcust
   		WITH getCustomer AS (
   			SELECT customerid FROM public.salesorderheader WHERE salesorderid = NEW.salesorderid
   		)
-  UPDATE public.customer SET number_of_items = (SELECT number_of_items FROM public.customer WHERE customerid = (SELECT customerid FROM getCustomer)) + (1*NEW.orderqty) WHERE customerid = (SELECT customerid FROM getCustomer);
+  UPDATE public.customer SET number_of_items = (SELECT number_of_items FROM public.customer WHERE customerid = (SELECT customerid FROM getCustomer)) + (1*NEW WHERE customerid = (SELECT customerid FROM getCustomer);
   RETURN NEW;
   END;
 
